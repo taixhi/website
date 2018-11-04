@@ -58,20 +58,13 @@ const Footer = () => (
         </a>
       </Item>
       <Item>
+        Find this website on{' '}
         <a
-          href="https://github.com/ryanwiemer/gatsby-starter-gcn"
+          href="https://github.com/taixhi/website"
           target="_blank"
           rel="noopener noreferrer"
         >
-          gatsby-starter-gcn
-        </a>{' '}
-        by{' '}
-        <a
-          href="https://github.com/ryanwiemer"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @ryanwiemer
+          @taixhi
         </a>
       </Item>
     </List>
