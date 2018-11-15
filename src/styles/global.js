@@ -21,14 +21,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: 120%;
     font: inherit;
     vertical-align: baseline;
   }
 
   /* Added to Fix Footer to bottom of viewport */
   html, body {
-    height: 100%;
+    height: 120%;
   }
   .siteRoot {
     height: 100vh;
@@ -83,15 +83,23 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: white;
-    line-height: 1;
-    font-size: 100%;
+    line-height: 1.25;
+    font-size: 120%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    color: #4a4a4a;
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Open Sans', 'Roboto', Helvetica, Arial, sans-serif, "Apple Color Emoji";
   }
 
+  h1, h2 {
+    color: #333;
+  }
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+  }
   img {
     display: block;
   	width: 100%;

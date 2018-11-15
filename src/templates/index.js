@@ -10,8 +10,8 @@ import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 
 const Index = ({ data, pageContext }) => {
-  const posts = data.allContentfulPost.edges
-  const featuredPost = posts[0].node
+  const galleries = data.allContentfulGallery.edges
+  const featuredGallery = galleries[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
 
@@ -26,15 +26,15 @@ const Index = ({ data, pageContext }) => {
       <Container>
         {isFirstPage ? (
           <CardList>
-            <Card {...featuredPost} featured />
-            {posts.slice(1).map(({ node: post }) => (
-              <Card key={post.id} {...post} />
+            <Card {...featuredGallery} featured />
+            {galleries.slice(1).map(({ node: gallery }) => (
+              <Card key={gallery.id} {...gallery} />
             ))}
           </CardList>
         ) : (
           <CardList>
-            {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
+            {galleries.map(({ node: gallery }) => (
+              <Card key={gallery.id} {...gallery} />
             ))}
           </CardList>
         )}
@@ -45,28 +45,18 @@ const Index = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allContentfulPost(
-      sort: { fields: [publishDate], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+  query ($skip: Int!, $limit: Int!) {
+    allContentfulGallery(sort: {fields: [publishDate], order: DESC}, limit: $limit, skip: $skip) {
       edges {
         node {
           title
           id
           slug
           publishDate(formatString: "MMMM DD, YYYY")
-          heroImage {
+          thumbnail {
             title
-            fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
-          }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 80)
+            fluid(maxWidth: 1000) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

@@ -3,20 +3,21 @@ import styled from 'styled-components'
 require('prismjs/themes/prism.css')
 
 const Body = styled.div`
+  @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Open+Sans:400,700');
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
 
   h1,
   h2,
   h3 {
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.25;
     margin: 0 0 1rem 0;
-    text-transform: capitalize;
+    font-family: 'Merriweather', serif;
   }
 
   h1 {
-    font-size: 1.5em;
+    font-size: 3em;
   }
   h2 {
     font-size: 1.25em;
@@ -25,16 +26,16 @@ const Body = styled.div`
     font-size: 1em;
   }
 
-  p {
-    line-height: 1.6;
-    margin: 0 0 2em 0;
+  p{
+    line-height: 1.4;
+    margin: 0 0 1em 0;
   }
 
   a {
     transition: 0.2s;
-    color: ${props => props.theme.colors.base};
+    color: ${props => props.theme.colors.highlight};
     &:hover {
-      color: ${props => props.theme.colors.highlight};
+      color: ${props => props.theme.colors.superhighlight};
     }
   }
 
@@ -50,14 +51,13 @@ const Body = styled.div`
 
   ul,
   ol {
-    margin: 0 0 2em 0;
+    margin: 0 0 2em 1em;
   }
 
   ul {
     li {
       list-style: disc;
-      list-style-position: inside;
-      line-height: 1.25;
+      line-height: 1.4;
       &:last-child {
         margin: 0;
       }
