@@ -43,7 +43,7 @@ export const query = graphql`
         id
         slug
       }
-      heroImage {
+      thumbnail {
         ogimg: resize(width: 900) {
           src
           width
