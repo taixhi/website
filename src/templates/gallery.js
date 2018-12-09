@@ -50,12 +50,12 @@ export const query = graphql`
           height
         }
       }
-      images {
-        title
-        fluid(maxWidth: 1000) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      // images {
+      //   title
+      //   fluid(maxWidth: 1000) {
+      //     ...GatsbyContentfulFluid_withWebp
+      //   }
+      // }
     }
   }
 `
