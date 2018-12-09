@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const Header = styled.header`
-  background: ${props => props.theme.colors.base};
+  ${'' /* background: ${props => props.theme.colors.base}; */}
   width: 100%;
   padding: 1.5em 0;
 `
@@ -15,33 +15,30 @@ const Nav = styled.nav`
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    max-width: 600px;
+    margin: auto;
   }
 
   li {
     display: inline-block;
-    margin-left: 1em;
-    &:first-child {
-      position: relative;
-      margin: 0;
-      flex-basis: 100%;
-    }
+    margin-left: 4em;
   }
 
   a {
     text-decoration: none;
-    color: DarkGray;
-    font-weight: 600;
+    color: ${props => props.theme.colors.base};
+    font-weight: 300;
     transition: all 0.2s;
-    border-bottom: 2px solid ${props => props.theme.colors.base};
     &:hover {
-      color: white;
+      color: ${props => props.theme.colors.superhighlight};
+      border-bottom: 2px solid ${props => props.theme.colors.superhighlight};
     }
   }
 `
 
 const activeLinkStyle = {
-  color: 'white',
+  color: '#d60054',
 }
 
 const Menu = () => {
@@ -49,20 +46,25 @@ const Menu = () => {
     <Header>
       <Nav>
         <ul>
-          <li>
+          {/* <li>
             <Link to="/" activeStyle={activeLinkStyle}>
               Home
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/about/" activeStyle={activeLinkStyle}>
               About
             </Link>
           </li>
           <li>
-            <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
+            <Link to="/photography/" activeStyle={activeLinkStyle}>
+              Photography
             </Link>
+          </li>
+          <li>
+            <a href="mailto:tkato.main@gmail.com" activeStyle={activeLinkStyle}>
+              E-mail
+            </a>
           </li>
         </ul>
       </Nav>

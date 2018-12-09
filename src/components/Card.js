@@ -53,7 +53,7 @@ const Card = ({ slug, thumbnail, title, publishDate, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
-        <Img fluid={thumbnail.fluid} backgroundColor={'#eeeeee'} />
+        {/* <Img fluid={thumbnail.fluid} backgroundColor={'#eeeeee'} /> */}
         <Title>{title}</Title>
         <Date>{publishDate}</Date>
       </Link>

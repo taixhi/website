@@ -29,13 +29,19 @@ exports.createPages = ({ graphql, actions }) => {
 
       // Create main home page
       createPage({
-        path: `/`,
+        path: `/photography/`,
         component: path.resolve(`./src/templates/index.js`),
         context: {
           limit: postsPerFirstPage,
           skip: 0,
           numPages: numPages + 1,
           currentPage: 1,
+        },
+      })
+      createPage({
+        path: `/`,
+        component: path.resolve(`./src/pages/about.js`),
+        context: {
         },
       })
 

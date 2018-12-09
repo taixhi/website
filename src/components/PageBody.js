@@ -6,7 +6,8 @@ const Body = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Open+Sans:400,700');
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-
+  color: #666;
+  font: 400 18px/32px Open Sans,San Francisco,sans-serif;
   h1,
   h2,
   h3 {
@@ -18,6 +19,7 @@ const Body = styled.div`
 
   h1 {
     font-size: 3em;
+    margin: 0 0 3rem 0;
   }
   h2 {
     font-size: 1.25em;
@@ -31,11 +33,13 @@ const Body = styled.div`
     margin: 0 0 1em 0;
   }
 
-  a {
+  a:not(.anchor){
     transition: 0.2s;
-    color: ${props => props.theme.colors.highlight};
+    color: ${props => props.theme.colors.grey};
+    border-bottom: 2px solid ${props => props.theme.colors.superhighlight};
     &:hover {
       color: ${props => props.theme.colors.superhighlight};
+      border-bottom: 2px solid ${props => props.theme.colors.superhighlight};
     }
   }
 

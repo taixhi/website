@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  font-size: ${props => (props.small ? '2em' : '6em')};
+  font-size: ${props => (props.small ? '2em' : '4em')};
   font-weight: 600;
   text-align: center;
   margin: 0 0 3rem 0;

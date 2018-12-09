@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
+import SocialIcons from './SocialIcons'
 
 const Wrapper = styled.footer`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidth};
+  font-size: 14px;
 `
 
 const List = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
@@ -25,6 +27,8 @@ const Item = styled.li`
   display: inline-block;
   padding: 0.25em 0;
   width: 100%;
+  font-color: #eee;
+  text-align: center;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     width: auto;
   }
@@ -45,27 +49,8 @@ const Footer = () => (
   <Wrapper>
     <List>
       <Item>
-        <a
-          href="https://www.contentful.com/"
-          rel="nofollow noopener noreferrer"
-          target="_blank"
-        >
-          <img
-            src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-            style={{ width: '100px' }}
-            alt="Powered by Contentful"
-          />
-        </a>
-      </Item>
-      <Item>
-        Find this website on{' '}
-        <a
-          href="https://github.com/taixhi/website"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @taixhi
-        </a>
+        <i>Man is nothing else but that which he makes of himself. <br/> – Sartre</i>
+        <SocialIcons />
       </Item>
     </List>
   </Wrapper>

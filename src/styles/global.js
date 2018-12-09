@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Added to Fix Footer to bottom of viewport */
   html, body {
+    -webkit-font-smoothing: antialiased;
     height: 120%;
   }
   .siteRoot {

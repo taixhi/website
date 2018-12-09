@@ -24,7 +24,8 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        {isFirstPage ? (
+       <p>Under Construction</p>
+        {/* {isFirstPage ? (
           <CardList>
             <Card {...featuredGallery} featured />
             {galleries.slice(1).map(({ node: gallery }) => (
@@ -37,7 +38,7 @@ const Index = ({ data, pageContext }) => {
               <Card key={gallery.id} {...gallery} />
             ))}
           </CardList>
-        )}
+        )} */}
       </Container>
       <Pagination context={pageContext} />
     </Layout>
