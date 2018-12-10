@@ -37,6 +37,24 @@ module.exports = {
         siteUrl: config.siteUrl,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-93175931-2",
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        // Avoids sending pageview hits from custom paths
+        exclude: [],
+        // Enables Google Optimize using your container Id
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: "taichikato.com",
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
