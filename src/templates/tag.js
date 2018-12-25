@@ -6,15 +6,15 @@ import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
 import CardList from '../components/CardList'
-import PageTitle from '../components/PageTitle'
+import PageHeader from '../components/PageHeader'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 
 const TagTemplate = ({ data, pageContext }) => {
-  const posts = sortBy(data.contentfulTag.post, 'publishDate').reverse()
+  const galleries = sortBy(data.contentfulTag.gallery, 'publishDate').reverse()
 
   const { title, slug } = data.contentfulTag
-  const numberOfPosts = posts.length
+  const numberOfPosts = galleries.length
   const skip = pageContext.skip
   const limit = pageContext.limit
   const currentPage = pageContext.currentPage
@@ -45,17 +45,11 @@ const TagTemplate = ({ data, pageContext }) => {
           <meta property="og:url" content={`${config.siteUrl}/tag/${slug}/`} />
         </Helmet>
       )}
-
+      <PageHeader title={numberOfPosts + " Collections Tagged: " + title}/>
       <Container>
-        <PageTitle small>
-          {numberOfPosts} Posts Tagged: &ldquo;
-          {title}
-          &rdquo;
-        </PageTitle>
-
         <CardList>
-          {posts.slice(skip, limit * currentPage).map(post => (
-            <Card {...post} key={post.id} />
+          {galleries.slice(skip, limit * currentPage).map(gallery => (
+            <Card {...gallery} key={galleries.id} />
           ))}
         </CardList>
       </Container>
@@ -70,21 +64,15 @@ export const query = graphql`
       title
       id
       slug
-      post {
-        id
+      gallery {
         title
+        id
         slug
         publishDate(formatString: "MMMM DD, YYYY")
-        heroImage {
+        thumbnail {
           title
-          fluid(maxWidth: 1800) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
-        }
-        body {
-          childMarkdownRemark {
-            html
-            excerpt(pruneLength: 80)
+          fluid(maxWidth: 1000) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
