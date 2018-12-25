@@ -24,6 +24,8 @@ const Wrapper = styled.div`
   .right .profile-picture {
     height: auto;
     border-radius: 50%;
+    width: 100%;
+    
   }
 
   .center > .right {
@@ -53,7 +55,7 @@ const Wrapper = styled.div`
       margin: 20px -100px;
     }
     .left {
-      margin-top: 300px;
+      margin-top: 200px;
     }
     .left h1 {
       font-size: 48px;

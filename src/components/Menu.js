@@ -22,7 +22,7 @@ const Nav = styled.nav`
 
   li {
     display: inline-block;
-    margin-left: 4em;
+    margin: 0 2em;
   }
 
   a {

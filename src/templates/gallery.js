@@ -3,13 +3,14 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
-import WrapperGallery from '../components/Gallery/WrapperGallery'
-import GalleryComposition from '../components/Gallery/GalleryComposition'
-import GalleryHead from '../components/Gallery/GalleryHead'
 import SEO from '../components/SEO'
+import Container from '../components/Container'
+import PageHeader from '../components/PageHeader'
+import ImageMasonry from '../components/ImageMasonry'
 
 const GalleryTemplate = ({ data, location }) => {
   const { title, slug, tags, images } = data.contentfulGallery
+  const description = data.contentfulGallery.description.internal.content
   const galleryNode = data.contentfulGallery
   return (
     <Layout location={location}>
@@ -17,10 +18,11 @@ const GalleryTemplate = ({ data, location }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} galleryNode={galleryNode} gallerySEO />
-      <GalleryHead title={title} tags={tags} />
-      <WrapperGallery>
-        <GalleryComposition photos={images} />
-      </WrapperGallery>
+      <PageHeader title={title} description={description}/>
+      <Container>
+        <ImageMasonry images={images}/>
+      </Container>
+      
     </Layout>
   )
 }
@@ -36,6 +38,11 @@ export const query = graphql`
           content
         }
       }
+      description {
+        internal{
+          content
+        }
+      }
       publishDate(formatString: "MMMM DD, YYYY")
       publishDateISO: publishDate(formatString: "YYYY-MM-DD")
       tags {
@@ -43,11 +50,12 @@ export const query = graphql`
         id
         slug
       }
-      thumbnail {
-        ogimg: resize(width: 900) {
+      images {
+        id
+        fluid(maxWidth: 1000) {
+          ...GatsbyContentfulFluid_withWebp
           src
-          width
-          height
+          srcSet
         }
       }
     }

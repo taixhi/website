@@ -3,44 +3,26 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import CardList from '../components/CardList'
 import Card from '../components/Card'
-import Helmet from 'react-helmet'
 import Container from '../components/Container'
-import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
-import config from '../utils/siteConfig'
+import PageHeader from '../components/PageHeader'
 
 const Index = ({ data, pageContext }) => {
   const galleries = data.allContentfulGallery.edges
   const featuredGallery = galleries[0].node
-  const { currentPage } = pageContext
-  const isFirstPage = currentPage === 1
 
   return (
     <Layout>
       <SEO />
-      {!isFirstPage && (
-        <Helmet>
-          <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
-        </Helmet>
-      )}
+      <PageHeader title="Collections" description="Check out these collections of my best photos."/>
       <Container>
-       <p>Under Construction</p>
-        {/* {isFirstPage ? (
-          <CardList>
-            <Card {...featuredGallery} featured />
-            {galleries.slice(1).map(({ node: gallery }) => (
-              <Card key={gallery.id} {...gallery} />
-            ))}
-          </CardList>
-        ) : (
-          <CardList>
-            {galleries.map(({ node: gallery }) => (
-              <Card key={gallery.id} {...gallery} />
-            ))}
-          </CardList>
-        )} */}
+        <CardList>
+          <Card {...featuredGallery} featured />
+          {galleries.slice(1).map(({ node: gallery }) => (
+            <Card key={gallery.id} {...gallery} />
+          ))}
+        </CardList>
       </Container>
-      <Pagination context={pageContext} />
     </Layout>
   )
 }
