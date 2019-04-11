@@ -91,7 +91,7 @@ const About = (props) => {
               <PageBody body={body} />
             </div>
             <div className = "right column">
-              <img className="profile-picture" src="https://miro.medium.com/max/2400/1*x1Af2NqUoPAsVJZdheqvng.jpeg" />
+              <img className="profile-picture" src="https://github.com/taixhi/website/raw/master/static/logos/Taichi.JPG" />
               <SocialIcons />
             </div>
           </div>
