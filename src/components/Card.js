@@ -11,7 +11,7 @@ const Post = styled.li`
     margin: 0 0 2vw 0;
   }
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
-    flex: ${props => (props.featured ? '0 0 66%' : '0 0 32%')};
+    flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
   a {
     position: relative;
@@ -22,7 +22,7 @@ const Post = styled.li`
       height: 0;
       padding-bottom: 60%;
       @media screen and (min-width: ${props => props.theme.responsive.small}) {
-        padding-bottom: ${props => (props.featured ? '60%' : '60%')};
+        padding-bottom: ${props => (props.featured ? '60%' : '100%')};
       }
       opacity: 1;
       transition: opacity .25s ease-in-out;
