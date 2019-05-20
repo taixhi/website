@@ -18,14 +18,19 @@ const Body = styled.div`
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 2em;
     margin: 0 0 3rem 0;
+    font-family: 'Merriweather', serif;
   }
   h2 {
     font-size: 1.25em;
+    font-family: 'Merriweather', serif;
+
   }
   h3 {
     font-size: 1em;
+    font-family: 'Merriweather', serif;
+
   }
 
   p{
@@ -52,7 +57,15 @@ const Body = styled.div`
   em {
     font-style: italic;
   }
-
+  img + em { 
+    font-weight: 600;
+    font-size: 0.8em;
+    display: block;
+    padding: 0.5em;
+    font-family: 'Merriweather', serif;
+    font-style: normal;
+    text-align: center !important
+  }
   ul,
   ol {
     margin: 0 0 2em 1em;
@@ -78,7 +91,9 @@ const Body = styled.div`
       }
     }
   }
-
+  img {
+    max-width: ${props => props.theme.sizes.maxWidthCentered};
+  }
   hr {
     border-style: solid;
     border-color: ${props => props.theme.colors.secondary};

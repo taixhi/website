@@ -18,12 +18,12 @@ const Text = styled.p`
 const Header = styled.div`
     margin: 0 auto auto;
     width: 100%;
-    max-width: ${props => props.theme.sizes.maxWidth};
-    padding: 1.5em 1.5em 1em;
+    max-width: ${props => props.theme.sizes.maxWidthCentered};
+    padding: 1em 0em;
     flex-grow: 1;
 `
 
-const PageHeader = props => {
+const BlogHeader = props => {
   return(
       <Header>
         <Title>{props.title}</Title>
@@ -32,4 +32,4 @@ const PageHeader = props => {
     )
 }
 
-export default PageHeader
+export default BlogHeader

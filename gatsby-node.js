@@ -18,8 +18,41 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allContentfulPost {
+          edges {
+            node {
+              slug
+              publishDate
+            }
+          }
+        }
       }
     `).then(result => {
+      // Blog
+      const blogs = result.data.allContentfulPost.edges
+      blogs.forEach((edge, i) => {
+        const prev = i === 0 ? null : blogs[i - 1].node
+        const next = i === blogs.length - 1 ? null : blogs[i + 1].node
+        createPage({
+          path: `blog/${edge.node.slug}/`,
+          component: path.resolve(`./src/templates/blog.js`),
+          context: {
+            slug: edge.node.slug,
+            prev,
+            next,
+          },
+        })
+      });
+      // Blog Home
+      createPage({
+        path: `/blog`,
+        component: path.resolve(`./src/templates/blog-home.js`),
+        context: {
+          limit: 1000,
+          skip: 0,
+        },
+      })
+      // Photo gallery
       const posts = result.data.allContentfulGallery.edges
       const postsPerFirstPage = config.postsPerHomePage
       const postsPerPage = config.postsPerPage
@@ -42,21 +75,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
         },
       })
-
-      // // Create additional pagination on home page if needed
-      // Array.from({ length: numPages }).forEach((_, i) => {
-      //   createPage({
-      //     path: `/${i + 2}/`,
-      //     component: path.resolve(`./src/templates/index.js`),
-      //     context: {
-      //       limit: postsPerPage,
-      //       skip: i * postsPerPage + postsPerFirstPage,
-      //       numPages: numPages + 1,
-      //       currentPage: i + 2,
-      //     },
-      //   })
-      // })
-
+      
       // Create each individual post
       posts.forEach((edge, i) => {
         const prev = i === 0 ? null : posts[i - 1].node
