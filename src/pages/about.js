@@ -7,7 +7,7 @@ import PageBody from '../components/PageBody'
 import SEO from '../components/SEO'
 import SocialIcons from '../components/SocialIcons'
 import styled from 'styled-components'
-
+import Carousel from '../components/Carousel'
 const Wrapper = styled.div`
   .columns {
     display: grid;
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
 
     .right {
       position: absolute;
-      top: 70px;
+      top: 270px;
       left: 50%;
       width: 200px;
       margin: 20px -100px;
@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 
 
 const About = (props) => {
-  const { title, body } = props.data.contentfulPage
+  const { title, body, featuredPhotos } = props.data.contentfulPage
   const postNode = props.data.contentfulPage
 
   return (
@@ -85,14 +85,15 @@ const About = (props) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath="aboutme" postNode={postNode} pageSEO />
-        <Wrapper>
-          <div className="columns">
+        <Wrapper>  
+	<Carousel images={featuredPhotos}/>
+	  <div className="columns">
             <div className="left column">
               <PageBody body={body} />
             </div>
             <div className = "right column">
               <img className="profile-picture" src="https://github.com/taixhi/website/raw/master/static/logos/Taichi.JPG" />
-              <SocialIcons />
+		<SocialIcons />
             </div>
           </div>
         </Wrapper>
@@ -113,6 +114,20 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
           excerpt(pruneLength: 320)
+        }
+      }
+      featuredPhotos {
+        id
+	fixed(width: 150, height: 150) {
+          ...GatsbyContentfulFixed_withWebp
+          src
+          srcSet
+        }
+ 
+        fluid(maxWidth: 1000) {
+          ...GatsbyContentfulFluid_withWebp
+          src
+          srcSet
         }
       }
     }

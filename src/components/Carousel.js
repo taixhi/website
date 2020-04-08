@@ -1,6 +1,8 @@
 import React from 'react'
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Img from 'gatsby-image'
+import Slider from "react-slick"
 import styled from 'styled-components'
 import Lightbox from 'react-images'
 
@@ -11,15 +13,12 @@ const Content = styled.div`
       -moz-transition: opacity .25s ease-in-out;
       -webkit-transition: opacity .25s ease-in-out;
       cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
 `
 const Wrapper = styled.div`
     margin: 2rem;
 `
 
-class ImageMasonry extends React.Component {
+class Carousel extends React.Component {
     constructor(props){
         super(props);
         this.state={lightboxIsOpen: false}
@@ -63,19 +62,44 @@ class ImageMasonry extends React.Component {
         const lightboxImages = this.props.images.map((image, i) => (
             {id: i, src: image.fluid.src, srcSet: image.fluid.srcSet}
         ))
+	const x = 2
+ 	const settings = {
+	      infinite: true,
+	      slidesToShow: 4*x,
+	      slidesToScroll: 1,
+	      initialSlide: 0,
+	      dots: false, 
+		responsive: [{
+		  breakpoint: 1024,
+		  settings: {
+		    slidesToShow: 3*x,
+		    infinite: true,
+		  }
+		},
+		{
+		  breakpoint: 600,
+		  settings: {
+		    slidesToShow: 2*x,
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+		    slidesToShow: 1*x,
+		  }
+		}],
+	      speed: 200,
+	      cssEase: "linear"
+	};
         return(
-            <Wrapper>
-                <ResponsiveMasonry
-                columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
-                >
-                    <Masonry>
-                        {this.props.images.map((image, i) => (
-                            <Content key={i} onClick={(e) => this.openLightbox(i, e)}>
-                                <Img fluid={image.fluid} backgroundColor={'#eeeeee'}/>
-                            </Content>
-                        ))}
-                    </Masonry>
-                </ResponsiveMasonry>
+	<Wrapper>
+	    <Slider {...settings}>
+		{this.props.images.map((image, i) => (
+		    <Content key={i} onClick={(e) => this.openLightbox(i, e)}>
+			<Img fixed={image.fixed} backgroundColor={'#eeeeee'}/>
+		    </Content>
+		))}
+	    </Slider>
                 <Lightbox
                     currentImage={this.state.currentImage}
                     images={lightboxImages}
@@ -85,9 +109,9 @@ class ImageMasonry extends React.Component {
                     onClose={this.closeLightbox}
                     backdropClosesModal={true}
                 />
-            </Wrapper>
+	</Wrapper>
         )
     }
 }
 
-export default ImageMasonry
+export default Carousel
