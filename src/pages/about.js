@@ -10,13 +10,9 @@ import styled from 'styled-components'
 import Carousel from '../components/Carousel'
 const Wrapper = styled.div`
   .columns {
-    display: grid;
-    width: 80%;
-    grid-template-columns: 65% 35%;
-    grid-template-rows: auto auto;
-    grid-column-gap: 30px;
-    justify-items: stretch;
-    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+	width: 80%;
     max-width: ${props => props.theme.sizes.maxWidth};
     margin: 5em auto;
   }
@@ -24,8 +20,12 @@ const Wrapper = styled.div`
   .right .profile-picture {
     height: auto;
     border-radius: 50%;
-    width: 100%;
-    
+    width: 60%;
+	margin: 0 auto;
+  }
+
+  .left {
+	width: 100%;
   }
 
   .center > .right {
@@ -34,43 +34,25 @@ const Wrapper = styled.div`
 
   @media (max-width: 1000px) {
     .columns {
-      grid-template-columns: 75% 25%;
     }
   }
 
   @media (max-width: 850px) {
     .columns {
-      grid-template-columns: 100%;
-    }
+		flex-direction: column-reverse;	
+		align-items: center;
+		margin: 1em auto;
+	}
 
-    .content {
-      margin-top: 300px;
-    }
+	.left h1 {
+		text-align: center;
+	}
 
     .right {
-      position: absolute;
-      top: 270px;
-      left: 50%;
-      width: 200px;
-      margin: 20px -100px;
-    }
-    .left {
-      margin-top: 200px;
-    }
-    .left h1 {
-      font-size: 48px;
-      text-align: center;
-    }
-
-    .left h2 {
-      font-size: 21px;
-      text-align: center;
-    }
-
-    .intro .block {
-      font-size: 16px;
-      line-height: 26px;
-    }
+		max-width: 300px;
+		text-align: center;
+	}
+    
   }
 `
 
@@ -86,7 +68,6 @@ const About = (props) => {
       </Helmet>
       <SEO pagePath="aboutme" postNode={postNode} pageSEO />
         <Wrapper>  
-	<Carousel images={featuredPhotos}/>
 	  <div className="columns">
             <div className="left column">
               <PageBody body={body} />
@@ -97,6 +78,7 @@ const About = (props) => {
             </div>
           </div>
         </Wrapper>
+		<Carousel images={featuredPhotos}/>
     </Layout>
   )
 }

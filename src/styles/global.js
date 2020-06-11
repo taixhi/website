@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 120%;
+    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
   }
@@ -84,12 +84,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: white;
     line-height: 1.25;
-    font-size: 120%;
+    font-size: 100%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
     color: #4a4a4a;
     font-weight: 400;
-    font-family: 'Open Sans', 'Roboto', Helvetica, Arial, sans-serif, "Apple Color Emoji";
+    font-family: 'Noto Serif SC', 'Georgia', serif, "Apple Color Emoji";
   }
 
   h1, h2 {

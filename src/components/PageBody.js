@@ -3,48 +3,44 @@ import styled from 'styled-components'
 require('prismjs/themes/prism.css')
 
 const Body = styled.div`
-  @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Open+Sans:400,700');
   margin: 0 auto;
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&family=Open+Sans&display=swap');
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-  color: #666;
-  font: 400 18px/32px Open Sans,San Francisco,sans-serif;
+  color: #000;
+  font: 400 inherit 'Noto Serif SC','Georgia',sans-serif;
   h1,
   h2,
   h3 {
+	color: #004;
     font-weight: 900;
     line-height: 1.25;
-    margin: 0 0 1rem 0;
-    font-family: 'Merriweather', serif;
+    margin: 0 0 1em 0;
+    font-family: 'Open Sans', sans-serif;
   }
 
   h1 {
-    font-size: 2em;
-    margin: 0 0 3rem 0;
-    font-family: 'Merriweather', serif;
+    font-size: 2.5em;
+    margin: 0 0 2rem 0;
   }
   h2 {
     font-size: 1.25em;
-    font-family: 'Merriweather', serif;
-
   }
   h3 {
     font-size: 1em;
-    font-family: 'Merriweather', serif;
-
   }
 
   p{
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0 0 1em 0;
   }
 
   a:not(.anchor){
+	color: #000;
     transition: 0.2s;
-    color: ${props => props.theme.colors.grey};
-    border-bottom: 2px solid ${props => props.theme.colors.superhighlight};
+    border-bottom: 1px solid ${props => props.theme.colors.superhighlight};
     &:hover {
       color: ${props => props.theme.colors.superhighlight};
-      border-bottom: 2px solid ${props => props.theme.colors.superhighlight};
+      border-bottom: 1px solid ${props => props.theme.colors.superhighlight};
     }
   }
 
@@ -62,7 +58,7 @@ const Body = styled.div`
     font-size: 0.8em;
     display: block;
     padding: 0.5em;
-    font-family: 'Merriweather', serif;
+    font-family: 'Noto Serif SC', serif;
     font-style: normal;
     text-align: center !important
   }
@@ -75,6 +71,7 @@ const Body = styled.div`
     li {
       list-style: disc;
       line-height: 1.4;
+	  margin: 1em 0;
       &:last-child {
         margin: 0;
       }

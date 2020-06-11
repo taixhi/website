@@ -17,12 +17,13 @@ const Nav = styled.nav`
     display: flex;
     justify-content: center;
     max-width: 600px;
+	flex-wrap: wrap;
     margin: auto;
   }
 
   li {
     display: inline-block;
-    margin: 0 2em;
+    margin: 0.5em 2em;
   }
 
   a {
@@ -62,7 +63,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/photography/" activeStyle={activeLinkStyle}>
+            <Link to="https://store.taichikato.com" activeStyle={activeLinkStyle}>
               Photography
             </Link>
           </li>
