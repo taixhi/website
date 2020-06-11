@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 
 
 const About = (props) => {
-  const { title, body, featuredPhotos } = props.data.contentfulPage
+  const { title, body, featuredPhotos, profileImage } = props.data.contentfulPage
   const postNode = props.data.contentfulPage
 
   return (
@@ -92,7 +92,7 @@ const About = (props) => {
               <PageBody body={body} />
             </div>
             <div className = "right column">
-              <img className="profile-picture" src="https://github.com/taixhi/website/raw/master/static/logos/Taichi.JPG" />
+              <img className="profile-picture" src={profileImage.fluid.src}/>
 		<SocialIcons />
             </div>
           </div>
@@ -114,6 +114,11 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
           excerpt(pruneLength: 320)
+        }
+      }
+      profileImage{
+        fluid(maxWidth: 640){
+          src
         }
       }
       featuredPhotos {
