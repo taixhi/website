@@ -54,22 +54,22 @@ const Menu = () => {
           </li> */}
           <li>
             <Link to="/about/" activeStyle={activeLinkStyle}>
-              About
+              about
             </Link>
           </li>
           <li>
             <Link to="/blog/" activeStyle={activeLinkStyle}>
-              Blog
+              blog
             </Link>
           </li>
           <li>
-            <Link to="https://store.taichikato.com" activeStyle={activeLinkStyle}>
-              Photography
-            </Link>
+            <a href="https://instagram.com/taixhi" activeStyle={activeLinkStyle}>
+              photography
+            </a>
           </li>
           <li>
             <a href="mailto:tkato.main@gmail.com" activeStyle={activeLinkStyle}>
-              E-mail
+              email
             </a>
           </li>
         </ul>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: 'Merriweather',serif;
   font-weight: 800;
   text-transform: capitalize;

@@ -89,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     color: #4a4a4a;
     font-weight: 400;
-    font-family: 'Noto Serif SC', 'Georgia', serif, "Apple Color Emoji";
+    font-family: 'Helvetica Nue', sans-serif, "Apple Color Emoji";
   }
 
   h1, h2 {

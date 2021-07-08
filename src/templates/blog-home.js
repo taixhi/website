@@ -19,7 +19,7 @@ const BlogHome = ({ data, pageContext }) => {
         <h1>{`${"Blog"} - ${config.siteTitle}`}</h1>
       </Helmet>
       <Container>
-        <PageHeader title="Blogs" description="some of my writings"/>
+        <PageHeader title="Blog" description="Some of my writings"/>
         <BlogList posts={posts}/>
       </Container>
     </Layout>
@@ -32,9 +32,12 @@ export const query = graphql`
       edges {
         node {
           title
+          tags {
+            title
+          }
           id
           slug
-          publishDate(formatString: "MMMM DD, YYYY")
+          publishDate(formatString: "YYYY-MM-DD")
         }
       }
     }

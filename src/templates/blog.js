@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import BlogHeader from '../components/BlogHeader'
+import PageHeader from '../components/PageHeader'
 import PageBody from '../components/PageBody'
 import SEO from '../components/SEO'
 
@@ -20,7 +20,7 @@ const BlogTemplate = ({ data }) => {
       <SEO pagePath={slug} postNode={postNode} pageSEO />
 
       <Container>
-        <BlogHeader title={title} description={publishDate}/>
+        <PageHeader title={title} description={publishDate}/>
         <PageBody body={body} />
       </Container>
     </Layout>
@@ -37,7 +37,7 @@ export const query = graphql`
           content
         }
       }
-      publishDate(formatString: "MMMM DD, YYYY")
+      publishDate(formatString: "YYYY-DD-MM")
       body {
         childMarkdownRemark {
           html
