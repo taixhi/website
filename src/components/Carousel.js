@@ -15,7 +15,9 @@ const Content = styled.div`
       cursor: pointer;
 `
 const Wrapper = styled.div`
-    margin: 2rem;
+    margin: 5em auto;
+    width: 80%;
+    max-width: 1050px;
 `
 
 class Carousel extends React.Component {
@@ -96,7 +98,7 @@ class Carousel extends React.Component {
 	    <Slider {...settings}>
 		{this.props.images.map((image, i) => (
 		    <Content key={i} onClick={(e) => this.openLightbox(i, e)}>
-			<Img fixed={image.fixed} backgroundColor={'#eeeeee'}/>
+				<Img fixed={image.fixed} backgroundColor={'#eeeeee'}/>
 		    </Content>
 		))}
 	    </Slider>

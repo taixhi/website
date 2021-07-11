@@ -4,17 +4,15 @@ import sortBy from 'lodash/sortBy'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
-import Card from '../components/Card'
-import CardList from '../components/CardList'
+import BlogList from '../components/BlogList'
 import PageHeader from '../components/PageHeader'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 
 const TagTemplate = ({ data, pageContext }) => {
-  const galleries = sortBy(data.contentfulTag.gallery, 'publishDate').reverse()
-
+  const posts = data.allContentfulPost.edges
   const { title, slug } = data.contentfulTag
-  const numberOfPosts = galleries.length
+  const numberOfPosts = posts.length
   const skip = pageContext.skip
   const limit = pageContext.limit
   const currentPage = pageContext.currentPage
@@ -45,13 +43,9 @@ const TagTemplate = ({ data, pageContext }) => {
           <meta property="og:url" content={`${config.siteUrl}/tag/${slug}/`} />
         </Helmet>
       )}
-      <PageHeader title={numberOfPosts + " Collections Tagged: " + title}/>
       <Container>
-        <CardList>
-          {galleries.slice(skip, limit * currentPage).map(gallery => (
-            <Card {...gallery} key={galleries.id} />
-          ))}
-        </CardList>
+        <PageHeader title={title}/>
+        <BlogList posts={posts}/>
       </Container>
       <Pagination context={pageContext} />
     </Layout>
@@ -59,24 +53,26 @@ const TagTemplate = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query($skip: Int!, $limit: Int!, $slug: String!) {
     contentfulTag(slug: { eq: $slug }) {
       title
       id
       slug
-      gallery {
-        title
-        id
-        slug
-        publishDate(formatString: "MMMM DD, YYYY")
-        thumbnail {
+    }
+    allContentfulPost(sort: {fields: [publishDate], order: DESC}, limit: $limit, skip: $skip, filter: {tags: {elemMatch: {title: {}, slug: {eq: $slug}}}}) {
+      edges {
+        node {
           title
-          fluid(maxWidth: 1000) {
-            ...GatsbyContentfulFluid_withWebp
+          tags {
+            title
           }
+          id
+          slug
+          publishDate(formatString: "YYYY-MM-DD")
         }
       }
     }
+
   }
 `
 

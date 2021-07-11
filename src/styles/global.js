@@ -87,13 +87,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
-    color: #4a4a4a;
+    color: #222;
     font-weight: 400;
-    font-family: 'Helvetica Nue', sans-serif, "Apple Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   }
 
   h1, h2 {
-    color: #333;
+    color: #222;
   }
 
   a {
