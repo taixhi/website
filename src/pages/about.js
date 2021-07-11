@@ -9,6 +9,7 @@ import SocialIcons from '../components/SocialIcons'
 import styled from 'styled-components'
 import Container from '../components/Container'
 import Carousel from '../components/Carousel'
+import profile from "../images/profile.jpg"
 const Wrapper = styled.div`
   display: flex;
   @media (max-width: 768px) {
@@ -62,12 +63,12 @@ const About = (props) => {
       <Container>
         <Wrapper>
           <Right>
-            <Img src={profileImage.fluid.src}/>
+            <Img src={profile}/>
           </Right>
           <Left>
             <Title>Taichi Kato</Title>
             <Text>My name is Taichi.</Text><br/>
-            <Text>I am a sophomore at <a href="https://www.amherst.edu/">Amherst College</a> studying Math and CS. I like to take photos.</Text><br/>
+            <Text>I am a sophomore at <a href="https://www.amherst.edu/">Amherst College</a> studying Math and CS. You can find me </Text><br/>
             <Text>You can read more about me <Link to="/blog/experiences/">here</Link>.</Text>
           </Left>
         </Wrapper>
