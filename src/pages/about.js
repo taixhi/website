@@ -67,9 +67,9 @@ const About = (props) => {
           </Right>
           <Left>
             <Title>Taichi Kato</Title>
-            <Text>My name is Taichi.</Text><br/>
-            <Text>I am a sophomore at <a href="https://www.amherst.edu/">Amherst College</a> studying Math and CS. You can find me </Text><br/>
-            <Text>You can read more about me <Link to="/blog/experiences/">here</Link>.</Text>
+            <Text>Welcome to my homepage.</Text><br/>
+            <Text>I am studying Math and Computer Science at <a href="https://www.amherst.edu/">Amherst College</a>.
+            </Text><br/>
           </Left>
         </Wrapper>
       </Container>
