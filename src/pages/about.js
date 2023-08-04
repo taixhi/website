@@ -69,7 +69,6 @@ const About = (props) => {
             <Title>Taichi Kato</Title>
             <Text>Welcome to my homepage.</Text><br/>
             <Text>I am studying Math and Computer Science at <a href="https://www.amherst.edu/">Amherst College</a>.
-            </Text><br/>
           </Left>
         </Wrapper>
       </Container>
